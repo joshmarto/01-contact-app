@@ -26,3 +26,16 @@ Route::get('/contacts/create', function() {
 });
 
 // php artisan route:list --except-vendor // To see in console the routes displayed
+// php artisan route:list --path=contacts -r // To show the paths with contacts related
+
+Route::get('/contacts/{id}', function( $id ) {
+    return "Contact: " . $id;
+});
+
+Route::get('/companies/{name?}', function( $name = null ) {
+    if ( $name ){
+        return "Company: " . $name;
+    } else{
+        return "All companies";
+    }
+});
