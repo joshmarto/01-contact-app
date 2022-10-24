@@ -38,6 +38,7 @@ Route::prefix('admin')->group(function() {
         $contacts = getContacts();
         abort_if( !isset($contacts[$id]), 404 );
         $contact = $contacts[$id];
+        $title = 'Details';
         return view( 'contacts.show' )->with('contact', $contact);
     })->where('id', '[0-9]+')->name('contacts.show'); //->whereNumber('id');
     
