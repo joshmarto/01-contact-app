@@ -37,8 +37,11 @@
                     </thead>
                     <tbody>
                         @forelse ($contacts as $id => $contact)
-                            <tr>
-                                <th scope="row">1</th>
+                            {{-- @if ($id == 1)
+                                @continue || @continue($id == 1)
+                            @endif --}}
+                            <tr {{-- $@if ($loop->first) class="table-primary" @endif --}}>
+                                <th scope="row">{{ $loop->index + 1 }}</th>
                                 <td>{{ $contact['name'] }}</td>
                                 <td>{{ $contact['phone'] }}</td>
                                 <td>alfred@test.com</td>
