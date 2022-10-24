@@ -36,7 +36,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($contacts as $id => $contact): ?>
+                        @forelse ($contacts as $id => $contact)
                             <tr>
                                 <th scope="row">1</th>
                                 <td>{{ $contact['name'] }}</td>
@@ -49,7 +49,9 @@
                                 <a href="#" class="btn btn-sm btn-circle btn-outline-danger" title="Delete" onclick="confirm('Are you sure?')"><i class="fa fa-times"></i></a>
                                 </td>
                             </tr>
-                        <?php endforeach ?>
+                        @empty
+                            <p>No contacts found</p>
+                        @endforelse
                     </tbody>
                 </table> 
 
