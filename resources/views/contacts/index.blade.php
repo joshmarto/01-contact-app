@@ -36,25 +36,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($contacts as $id => $contact)
+                        {{-- @forelse ($contacts as $id => $contact)
                             {{-- @if ($id == 1)
                                 @continue || @continue($id == 1)
                             @endif --}}
-                            <tr {{-- $@if ($loop->first) class="table-primary" @endif --}}>
-                                <th scope="row">{{ $loop->index + 1 }}</th>
-                                <td>{{ $contact['name'] }}</td>
-                                <td>{{ $contact['phone'] }}</td>
-                                <td>alfred@test.com</td>
-                                <td>Company one</td>
-                                <td width="150">
-                                <a href="{{ route('contacts.show', $id) }}" class="btn btn-sm btn-circle btn-outline-info" title="Show"><i class="fa fa-eye"></i></a>
-                                <a href="form.html" class="btn btn-sm btn-circle btn-outline-secondary" title="Edit"><i class="fa fa-edit"></i></a>
-                                <a href="#" class="btn btn-sm btn-circle btn-outline-danger" title="Delete" onclick="confirm('Are you sure?')"><i class="fa fa-times"></i></a>
-                                </td>
+                        {{--    @include('contacts._contact')
                             </tr>
                         @empty
                             <p>No contacts found</p>
-                        @endforelse
+                        @endforelse --}}
+                        @each('contacts._contact', $contacts, 'contact', 'contacts._empty')
                     </tbody>
                 </table> 
 
