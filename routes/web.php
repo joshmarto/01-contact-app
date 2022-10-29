@@ -24,3 +24,5 @@ Route::controller(ContactController::class)->name('contacts.')->group(function()
     Route::get('/contacts/{id}', 'show')->where('id', '[0-9]+')->name('show');
 });
 
+
+
