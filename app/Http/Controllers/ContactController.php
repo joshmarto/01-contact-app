@@ -23,4 +23,17 @@ class ContactController extends Controller
             3 => ['id' => 3, 'name' => 'Name 3', 'phone' => '3456789012'],
         ];
     }
+
+    public function create()
+    {
+        return view('contacts.create');
+    }
+
+    public function show( $id )
+    {
+        $contacts = $this->getContacts();
+        abort_if( !isset($contacts[$id]), 404 );
+        $contact = $contacts[$id];
+        return view( 'contacts.show' )->with('contact', $contact);
+    }
 }
