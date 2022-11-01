@@ -2,16 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\CompanyRepository;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
-    public function index()
+    public function __construct(protected CompanyRepository $company)
     {
-        $companies = [
-            1 => ['name' => 'Company One', 'contacts' => 3],
-            2 => ['name' => 'Company Two', 'contacts' => 5],
-        ];
+    }
+
+    public function index(CompanyRepository $company, Request $request)
+    {
+        // dd($request->sort_by); // url/contacts?sort_by=name; //? Works as a breaking point ?
+        // $companies = [
+        //     1 => ['name' => 'Company One', 'contacts' => 3],
+        //     2 => ['name' => 'Company Two', 'contacts' => 5],
+        // ];
+        $companies = $company->pluck();
         $contacts = $this->getContacts();
         return view( 'contacts.index', compact('contacts', 'companies') );
     }
@@ -29,7 +36,7 @@ class ContactController extends Controller
         return view('contacts.create');
     }
 
-    public function show( $id )
+    public function show(  Request $request, $id )
     {
         $contacts = $this->getContacts();
         abort_if( !isset($contacts[$id]), 404 );
