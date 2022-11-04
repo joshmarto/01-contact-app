@@ -24,7 +24,5 @@ Route::get('/contacts', [ContactController::class, 'index'])->name('contacts.ind
 Route::get('/contacts/create', [ContactController::class, 'create'])->name('contacts.create');
 Route::get('/contacts/{id}', [ContactController::class, 'show'])->where('id', '[0-9]+')->name('contacts.show');
 Route::resource('/companies', CompanyController::class);
-Route::resource([
-    '/tags' => TagController::class,
-    '/tasks' => TaskController::class,
-]);
+Route::resource('/tags', TagController::class);
+Route::resource('/tasks', TaskController::class);
