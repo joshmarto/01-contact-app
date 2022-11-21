@@ -28,7 +28,14 @@ Route::get('/contacts/{id}', [ContactController::class, 'show'])->where('id', '[
 Route::resource('/companies', CompanyController::class);
 Route::resource('/tags', TagController::class);
 Route::resource('/tasks', TaskController::class);
-Route::resource('/activities', ActivityController::class)->except([
-    'index', 'show',
-]);
 Route::resource('/contacts.notes', ContactNoteController::class)->shallow();
+// Route::resource('/activities', ActivityController::class)->except([
+//     'index', 'show',
+// ]);
+// Route::resource('/activities', ActivityController::class)->names([
+//     'index' => 'activities.all',
+//     'show' => 'activities.view',
+// ]);
+Route::resource('/activities', ActivityController::class)->parameters([
+    'activities' => 'active',
+]);
